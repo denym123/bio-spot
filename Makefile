@@ -7,7 +7,7 @@ else
 endif
 
 mobx:
-	@fvm flutter pub run build_runner watch -d
+	@fvm dart run build_runner watch -d
 
 clean:
 	@fvm flutter clean && fvm flutter pub get

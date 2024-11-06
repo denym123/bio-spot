@@ -24,3 +24,7 @@ class AppColors {
   Color get grey => const Color(0xFFA5A6AE);
   Color get light => const Color(0xFFFAFAFA);
 }
+
+extension AppColorsExtension on BuildContext {
+  AppColors get colors => AppColors.i;
+}
