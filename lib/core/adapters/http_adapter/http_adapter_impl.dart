@@ -42,7 +42,10 @@ class HttpAdapterImpl implements HttpAdapter {
     data,
     String? pathFile,
   }) async {
+    const String baseUrl = "http://191.252.60.138:300/api/v1";
     try {
+      url = baseUrl + url;
+
       log('[HTTP] Request type ${httpMethod.name()} in URL $url');
 
       if (data != null) log('[HTTP] with body ${jsonEncode(data)}');

@@ -11,3 +11,4 @@ export 'stores/stores.dart';
 export 'constants/constants.dart';
 export 'routes/routes.dart';
 export 'mixins/mixins.dart';
+export 'models/models.dart';

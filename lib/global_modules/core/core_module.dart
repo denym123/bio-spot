@@ -7,5 +7,6 @@ class CoreModule extends Module {
   void exportedBinds(Injector i) {
     i.add<HttpAdapter>(HttpAdapterImpl.new);
     i.addSingleton<LocalSecureStorage>(LocalSecureStorageImpl.new);
+    i.addSingleton(UserStore.new);
   }
 }

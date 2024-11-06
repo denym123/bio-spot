@@ -12,7 +12,7 @@ class AppColors {
 
   Color get primary => const Color(0xFF1CB259);
   Color get primaryDark => const Color(0xFF13773C);
-  Color get primaryLight => const Color(0xFF2FCE9A);
+  Color get primaryLight => const Color(0xFFF6FAF1);
   Color get secondary => const Color(0xFF20CB65);
 
   Color get error => const Color(0xFFD32F2F);

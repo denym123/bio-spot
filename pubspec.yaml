@@ -24,8 +24,12 @@ dependencies:
   photo_view: ^0.15.0
   flutter_svg: ^2.0.13
 
+  flutter_map: ^7.0.2
+
   # Internal
   flutter_modular: ^6.3.4
+  latlong2: ^0.9.1
+  flutter_map_location_marker: ^9.1.1
   dio: ^5.5.0+1
   flutter_mobx: ^2.2.1+1
   mobx: ^2.3.3+2
@@ -37,7 +41,7 @@ dependencies:
   url_launcher: ^6.3.0
   connectivity_plus: ^6.0.4
   path_provider: ^2.1.4
-  geolocator: ^12.0.0
+  geolocator: ^13.0.1
   geocoding: ^3.0.0
 
   # DataBase

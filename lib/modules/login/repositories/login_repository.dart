@@ -1,4 +1,3 @@
-import 'package:biospot/core/models/user_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../core/core.dart';

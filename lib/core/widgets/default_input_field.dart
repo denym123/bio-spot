@@ -11,6 +11,8 @@ class DefaultInputField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final ValueNotifier<bool> _obscureTextVN;
+  final Widget? prefixIcon;
+  final bool multiArea;
   DefaultInputField({
     super.key,
     required this.label,
@@ -18,7 +20,9 @@ class DefaultInputField extends StatelessWidget {
     this.masks,
     this.keyboardType,
     this.validator,
+    this.multiArea = false,
     this.obscureText = false,
+    this.prefixIcon,
   }) : _obscureTextVN = ValueNotifier<bool>(obscureText);
 
   @override
@@ -39,6 +43,7 @@ class DefaultInputField extends StatelessWidget {
             valueListenable: _obscureTextVN,
             builder: (_, obscureTextVNValue, child) {
               return TextFormField(
+                maxLines: multiArea ? 6 : 1,
                 onTapOutside: (event) {
                   FocusScope.of(context).unfocus();
                 },
@@ -57,6 +62,7 @@ class DefaultInputField extends StatelessWidget {
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
+                  prefixIcon: prefixIcon,
                   suffixIcon: obscureText
                       ? Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 16.w, 0),

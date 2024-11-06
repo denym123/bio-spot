@@ -53,6 +53,7 @@ class AppStyles {
   AppBarTheme get appBarTheme => AppBarTheme(
         elevation: 0,
         backgroundColor: AppColors.i.primary,
+        foregroundColor: AppColors.i.primaryDark,
       );
 }
 

@@ -41,7 +41,7 @@ abstract class LoginControllerBase with Store, ControllerLifeCycle {
       (value) async {
         await _localSecureStorage.write(
             LocalSecureStorageConstants.ACCESS_TOKEN, value.token);
-        AppRoutes.goToHome();
+        AppRoutes.goToSuspect();
       },
     ).catchError((e) {
       _localSecureStorage.clear();
