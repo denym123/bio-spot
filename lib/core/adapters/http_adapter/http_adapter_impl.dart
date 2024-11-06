@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 
-import '../../constants/local_secure_storage_constants.dart';
 import '../../core.dart';
 
 class HttpAdapterImpl implements HttpAdapter {
@@ -13,7 +12,6 @@ class HttpAdapterImpl implements HttpAdapter {
   final _dio = dio.Dio(
     dio.BaseOptions(
       receiveDataWhenStatusError: true,
-      // TODO: Capturar timeout do remote config
       sendTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       connectTimeout: const Duration(seconds: 30),
@@ -31,7 +29,6 @@ class HttpAdapterImpl implements HttpAdapter {
   }) : _localSecureStore = localSecureStore;
 
   dio.Dio get dioInstance {
-    // TODO: Implementar interceptors
     return _dio;
   }
 

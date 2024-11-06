@@ -3,7 +3,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'secure_storage.dart';
 
 class LocalSecureStorageImpl implements LocalSecureStorage {
-  FlutterSecureStorage get _instance => const FlutterSecureStorage();
+  FlutterSecureStorage get _instance => const FlutterSecureStorage(
+        aOptions: AndroidOptions(encryptedSharedPreferences: true),
+      );
   @override
   Future<void> clear() => _instance.deleteAll();
 

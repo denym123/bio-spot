@@ -8,4 +8,8 @@ class AppRoutes {
   static goToLogin() {
     Modular.to.navigate(Routes.login);
   }
+
+  static goToHome() {
+    Modular.to.navigate(Routes.home);
+  }
 }

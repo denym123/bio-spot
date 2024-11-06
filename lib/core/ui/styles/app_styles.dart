@@ -23,7 +23,7 @@ class AppStyles {
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              ScreenUtil().radius(20),
+              ScreenUtil().radius(12),
             ),
           ),
         ),

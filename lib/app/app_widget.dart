@@ -7,27 +7,8 @@ import 'package:grock/grock.dart';
 
 import '../core/core.dart';
 
-class AppWidget extends StatefulWidget {
+class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
-
-  @override
-  State<AppWidget> createState() => _AppWidgetState();
-}
-
-class _AppWidgetState extends State<AppWidget> {
-  // final sqliteAdmConnection = SqliteAdmConnection();
-
-  @override
-  void initState() {
-    super.initState();
-    // WidgetsBinding.instance.addObserver(sqliteAdmConnection);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    // WidgetsBinding.instance.removeObserver(sqliteAdmConnection);
-  }
 
   @override
   Widget build(BuildContext context) {

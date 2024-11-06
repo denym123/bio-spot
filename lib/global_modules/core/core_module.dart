@@ -5,7 +5,7 @@ import '../../core/core.dart';
 class CoreModule extends Module {
   @override
   void exportedBinds(Injector i) {
-    i.addSingleton(HttpAdapterImpl.new);
-    i.addSingleton(LocalSecureStorageImpl.new);
+    i.add<HttpAdapter>(HttpAdapterImpl.new);
+    i.addSingleton<LocalSecureStorage>(LocalSecureStorageImpl.new);
   }
 }
