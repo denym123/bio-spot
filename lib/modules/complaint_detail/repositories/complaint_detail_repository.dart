@@ -21,7 +21,7 @@ class ComplaintDetailRepository extends RepositoryLifeCycle {
     );
   }
 
-  Future<void> confirmComplaint(int id, String notes) async {
+  Future<void> confirmPlague(int id, String notes) async {
     await httpAdapter.request(
         httpMethod: HttpMethod.post,
         url: "${WebServiceUrl.complaints}/$id/confirm",

@@ -1,4 +1,5 @@
 import 'package:biospot/core/widgets/default_input_field.dart';
+import 'package:biospot/core/widgets/default_single_dropdown_button.dart';
 import 'package:biospot/modules/suspect/models/suspect_model.dart';
 import 'package:biospot/modules/suspect_detail/controllers/controllers.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class _SuspectDetailPageState
                         Row(
                           children: [
                             Text(
-                              "Detalhes da denúncia",
+                              "Detalhes da suspeita",
                               style: context.textStyles.semiBold16,
                             ),
                             Spacer(),
@@ -75,11 +76,6 @@ class _SuspectDetailPageState
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          "Data: ${controller.suspectModel?.complaint?.startedAt.replaceAll('-', '/')}",
-                          style: context.textStyles.regular,
-                        ),
-                        SizedBox(height: 16.h),
-                        Text(
                           "Situação: ${controller.suspectModel?.status?.name ?? ''}",
                           style: context.textStyles.regular,
                         ),
@@ -87,9 +83,8 @@ class _SuspectDetailPageState
                         Wrap(
                           spacing: 16.w,
                           children: [
-                            if (controller.suspectModel?.actions
-                                    ?.contains('resolver') ==
-                                false) ...[
+                            if (controller.suspectModel?.actions !=
+                                "observer") ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     padding:
@@ -116,7 +111,18 @@ class _SuspectDetailPageState
                                                     controller: controller
                                                         .notesController),
                                                 const Text(
-                                                    "Tem certeza que deseja confirmar a denúncia?"),
+                                                    "Tem certeza que deseja confirmar a suspeita?"),
+                                                DefaultSingleDropdownButton(
+                                                    required: true,
+                                                    label: "Tipos de praga",
+                                                    value: null,
+                                                    onChanged: (val) {
+                                                      controller
+                                                              .selectedPlagueType =
+                                                          val;
+                                                    },
+                                                    items:
+                                                        controller.plagueTypes)
                                               ],
                                             ),
                                             actions: [
@@ -139,11 +145,10 @@ class _SuspectDetailPageState
                                           );
                                         });
                                   },
-                                  child: const Text("Confirmar denúncia")),
+                                  child: const Text("Confirmar suspeita")),
                             ],
-                            if (controller.suspectModel?.actions
-                                    ?.contains('resolver') ==
-                                false) ...[
+                            if (controller.suspectModel?.actions !=
+                                "observer") ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     padding:
@@ -161,10 +166,10 @@ class _SuspectDetailPageState
                                           return AlertDialog(
                                             backgroundColor: Colors.white,
                                             title: const Text(
-                                              "Descartar denúncia",
+                                              "Descartar suspeita",
                                             ),
                                             content: const Text(
-                                              "Tem certeza que deseja descartar esta denúncia?",
+                                              "Tem certeza que deseja descartar esta suspeita?",
                                             ),
                                             actions: [
                                               TextButton(
@@ -186,7 +191,7 @@ class _SuspectDetailPageState
                                           );
                                         });
                                   },
-                                  child: const Text("Descartar denúncia")),
+                                  child: const Text("Descartar suspeita")),
                             ],
                           ],
                         ),

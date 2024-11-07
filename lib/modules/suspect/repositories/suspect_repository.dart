@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-
 import '../../../core/core.dart';
-import '../../suspect/suspect.dart';
 import '../models/suspect_model.dart';
 
 class SuspectRepository extends RepositoryLifeCycle {

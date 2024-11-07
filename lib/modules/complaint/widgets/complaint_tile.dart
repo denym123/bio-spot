@@ -34,7 +34,7 @@ class ComplaintTile extends StatelessWidget {
           child: Row(
             children: [
               Icon(
-                Icons.report_gmailerrorred_rounded,
+                Icons.campaign_rounded,
                 size: 32.r,
                 color: Colors.red,
               ),

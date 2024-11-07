@@ -13,6 +13,34 @@ class AppStyles {
     return _instance!;
   }
 
+  InputDecoration get defaultInputDecoration => InputDecoration(
+        isDense: true,
+        prefixIconColor: Colors.grey,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(ScreenUtil().radius(8)),
+          borderSide: BorderSide(
+            color: AppColors.i.grey,
+          ),
+        ),
+        fillColor: const Color(0xffF7F8F9),
+        filled: true,
+        contentPadding: EdgeInsets.fromLTRB(
+          ScreenUtil().setWidth(24),
+          ScreenUtil().setHeight(18),
+          ScreenUtil().setWidth(24),
+          ScreenUtil().setHeight(18),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(ScreenUtil().radius(8)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            ScreenUtil().radius(8),
+          ),
+          borderSide: BorderSide(
+              width: ScreenUtil().setWidth(2), color: AppColors.i.primary),
+        ),
+      );
   ElevatedButtonThemeData get primaryButton => ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 3,

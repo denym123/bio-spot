@@ -78,7 +78,7 @@ abstract class NewProcessControllerBase with Store, ControllerLifeCycle {
     );
     await _newProcessRepository.sendNewComplaintProcess(request).then(
       (_) {
-        // Modular.get<SuspectController>().fetchSuspects();
+        Modular.get<ComplaintController>().fetchComplaints();
         Modular.to.pop();
       },
     );

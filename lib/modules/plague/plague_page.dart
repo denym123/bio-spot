@@ -65,12 +65,11 @@ class _PlaguePageState
                               var plague = controller.plagues[index];
                               return PlagueTile(
                                 onPressed: () {
-                                  // AppRoutes.goToPlagueDetail(plague);
+                                  AppRoutes.goToPlagueDetail(plague);
                                 },
-                                plagueName:
-                                    plague.processInfo?.description ?? '',
+                                plagueName: plague.name ?? '',
                                 plagueStatus: plague.status,
-                                plagueDate: '',
+                                plagueDescription: plague.description ?? '',
                               );
                             },
                             separatorBuilder: (context, index) {

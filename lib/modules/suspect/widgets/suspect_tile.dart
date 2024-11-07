@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 class SuspectTile extends StatelessWidget {
   final String suspectName;
   final StatusModel? suspectStatus;
-  final String suspectDate;
   final VoidCallback? onPressed;
 
   const SuspectTile(
       {super.key,
       required this.suspectName,
-      required this.suspectDate,
       required this.suspectStatus,
       this.onPressed});
 
@@ -46,11 +44,6 @@ class SuspectTile extends StatelessWidget {
                     Text(suspectName,
                         style: context.textStyles.medium
                             .copyWith(color: context.colors.dark)),
-                    Text(
-                      "Data de suspeita: ${suspectDate.replaceAll('-', "/")}",
-                      style: context.textStyles.medium
-                          .copyWith(color: context.colors.dark),
-                    ),
                     Row(
                       children: [
                         Text(suspectStatus?.name ?? '',

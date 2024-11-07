@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class PlagueTile extends StatelessWidget {
   final String plagueName;
   final StatusModel? plagueStatus;
-  final String plagueDate;
+  final String plagueDescription;
   final VoidCallback? onPressed;
 
   const PlagueTile(
       {super.key,
       required this.plagueName,
-      required this.plagueDate,
+      required this.plagueDescription,
       required this.plagueStatus,
       this.onPressed});
 
@@ -46,11 +46,7 @@ class PlagueTile extends StatelessWidget {
                     Text(plagueName,
                         style: context.textStyles.medium
                             .copyWith(color: context.colors.dark)),
-                    Text(
-                      "Data de suspeita: ${plagueDate.replaceAll('-', "/")}",
-                      style: context.textStyles.medium
-                          .copyWith(color: context.colors.dark),
-                    ),
+                    Text(plagueDescription),
                     Row(
                       children: [
                         Text(plagueStatus?.name ?? '',

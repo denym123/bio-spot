@@ -67,7 +67,6 @@ class _SuspectPageState
                                 onPressed: () {
                                   AppRoutes.goToSuspectDetail(suspect);
                                 },
-                                suspectDate: suspect.complaint?.startedAt ?? '',
                                 suspectName:
                                     suspect.processInfo?.description ?? '',
                                 suspectStatus: suspect.status,

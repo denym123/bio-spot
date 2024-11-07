@@ -37,9 +37,11 @@ abstract class ComplaintDetailControllerBase with Store, ControllerLifeCycle {
   @action
   Future<void> confirmComplaint(int id) async {
     isLoading = true;
-    _complaintDetailRepository.confirmComplaint(id, notesController.text).then(
-      (value) async {
-        await Modular.get<ComplaintController>().fetchComplaints();
+    await _complaintDetailRepository
+        .confirmPlague(id, notesController.text)
+        .then(
+      (_) async {
+        Modular.get<ComplaintController>().fetchComplaints();
         await getComplaint(id);
       },
     ).whenComplete(

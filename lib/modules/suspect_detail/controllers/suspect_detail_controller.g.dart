@@ -25,6 +25,22 @@ mixin _$SuspectDetailController on SuspectDetailControllerBase, Store {
     });
   }
 
+  late final _$selectedPlagueTypeAtom = Atom(
+      name: 'SuspectDetailControllerBase.selectedPlagueType', context: context);
+
+  @override
+  PlagueTypeModel? get selectedPlagueType {
+    _$selectedPlagueTypeAtom.reportRead();
+    return super.selectedPlagueType;
+  }
+
+  @override
+  set selectedPlagueType(PlagueTypeModel? value) {
+    _$selectedPlagueTypeAtom.reportWrite(value, super.selectedPlagueType, () {
+      super.selectedPlagueType = value;
+    });
+  }
+
   late final _$suspectModelAtom =
       Atom(name: 'SuspectDetailControllerBase.suspectModel', context: context);
 
@@ -83,10 +99,20 @@ mixin _$SuspectDetailController on SuspectDetailControllerBase, Store {
     return _$getSuspectAsyncAction.run(() => super.getSuspect(id));
   }
 
+  late final _$getPlagueTypesAsyncAction = AsyncAction(
+      'SuspectDetailControllerBase.getPlagueTypes',
+      context: context);
+
+  @override
+  Future<void> getPlagueTypes() {
+    return _$getPlagueTypesAsyncAction.run(() => super.getPlagueTypes());
+  }
+
   @override
   String toString() {
     return '''
 notesController: ${notesController},
+selectedPlagueType: ${selectedPlagueType},
 suspectModel: ${suspectModel},
 isLoading: ${isLoading}
     ''';

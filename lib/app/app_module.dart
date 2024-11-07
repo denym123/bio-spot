@@ -1,5 +1,6 @@
 import 'package:biospot/modules/new_process/new_process.dart';
 import 'package:biospot/modules/plague/plague.dart';
+import 'package:biospot/modules/plague_detail/plague_detail.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../core/routes/routes.dart';
@@ -31,5 +32,6 @@ class AppModule extends Module {
     r.module(Routes.suspectDetail, module: SuspectDetailModule());
     r.module(Routes.newResquest, module: NewProcessModule());
     r.module(Routes.plagues, module: PlagueModule());
+    r.module(Routes.plagueDetail, module: PlagueDetailModule());
   }
 }

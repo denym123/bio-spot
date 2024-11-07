@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../core/constants/roles.dart';
 import '../../../core/core.dart';
 import '../../../core/routes/app_routes.dart';
 import '../dtos/login_request_dto.dart';
@@ -39,9 +40,18 @@ abstract class LoginControllerBase with Store, ControllerLifeCycle {
     )
         .then(
       (value) async {
+        Modular.get<UserStore>().setUserModel(value);
         await _localSecureStorage.write(
             LocalSecureStorageConstants.ACCESS_TOKEN, value.token);
-        AppRoutes.goToSuspect();
+
+        if (value.role == Roles.FISCAL || value.role == Roles.CITIZEN) {
+          AppRoutes.goToComplaint();
+        }
+        if (value.role == Roles.SPECIALIST) {
+          AppRoutes.goToSuspect();
+        } else {
+          AppRoutes.goToComplaint();
+        }
       },
     ).catchError((e) {
       _localSecureStorage.clear();

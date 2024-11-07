@@ -1,4 +1,5 @@
 import 'package:biospot/modules/complaint/models/complaint_model.dart';
+import 'package:biospot/modules/plague/models/plague_model.dart';
 import 'package:biospot/modules/suspect/models/suspect_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -33,5 +34,9 @@ class AppRoutes {
 
   static goToPlagues() {
     Modular.to.navigate(Routes.plagues);
+  }
+
+  static goToPlagueDetail(PlagueModel plagueModel) {
+    Modular.to.pushNamed(Routes.plagueDetail, arguments: plagueModel);
   }
 }

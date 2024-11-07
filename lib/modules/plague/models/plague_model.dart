@@ -3,15 +3,24 @@ import '../../complaint/models/complaint_model.dart';
 
 class PlagueModel {
   int? id;
+  String? name;
+  String? description;
   StatusModel? status;
-  ProcessInfo? processInfo;
   String? actions;
   bool? isPublic;
+
+  //"id" -> 2
+  //"name" -> "Cancro Cítrico"
+  //"description" -> "b"
+  //"status" -> [_Map]
+  //"is_public" -> true
+  //"actions" -> "executor"
 
   PlagueModel(
       {required this.id,
       required this.status,
-      this.processInfo,
+      required this.name,
+      required this.description,
       required this.isPublic,
       required this.actions});
 
@@ -21,9 +30,8 @@ class PlagueModel {
         status: json['status'] != null
             ? StatusModel.fromJson(json['status'])
             : null,
-        processInfo: json['process_info'] != null
-            ? ProcessInfo.fromJson(json['process_info'])
-            : null,
+        name: json['name'],
+        description: json['description'],
         actions: json['actions'],
         isPublic: json['is_public']);
   }

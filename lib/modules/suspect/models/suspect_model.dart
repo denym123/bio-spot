@@ -7,14 +7,12 @@ class SuspectModel {
   StatusModel? status;
   ProcessInfo? processInfo;
   String? actions;
-  ComplaintModel? complaint;
 
   SuspectModel(
       {required this.id,
       required this.status,
       this.processInfo,
       required this.notes,
-      required this.complaint,
       required this.actions});
 
   factory SuspectModel.fromJson(Map<String, dynamic> json) {
@@ -27,9 +25,6 @@ class SuspectModel {
             ? ProcessInfo.fromJson(json['process_info'])
             : null,
         actions: json['actions'],
-        notes: json['notes'],
-        complaint: json['complaint'] != null
-            ? ComplaintModel.fromJson(json['complaint'])
-            : null);
+        notes: json['notes']);
   }
 }

@@ -1,4 +1,6 @@
+import 'package:biospot/modules/plague/widgets/plague_tile.dart';
 import 'package:biospot/modules/suspect/controllers/controllers.dart';
+import 'package:biospot/modules/suspect_detail/models/plague_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -21,12 +23,19 @@ abstract class SuspectDetailControllerBase with Store, ControllerLifeCycle {
 
   @override
   void onInit([Map<String, dynamic>? params]) {
+    getPlagueTypes();
     suspectModel = params?['suspect'];
     super.onInit(params);
   }
 
+  ObservableList<PlagueTypeModel> plagueTypes =
+      ObservableList<PlagueTypeModel>();
+
   @observable
   TextEditingController notesController = TextEditingController();
+
+  @observable
+  PlagueTypeModel? selectedPlagueType;
 
   @observable
   SuspectModel? suspectModel;
@@ -37,7 +46,9 @@ abstract class SuspectDetailControllerBase with Store, ControllerLifeCycle {
   @action
   Future<void> confirmSuspect(int id) async {
     isLoading = true;
-    _suspectDetailRepository.confirmSuspect(notesController.text, id).then(
+    _suspectDetailRepository
+        .confirmSuspect(notesController.text, id, selectedPlagueType?.id ?? 0)
+        .then(
       (value) {
         Modular.get<SuspectController>().fetchSuspects();
       },
@@ -76,5 +87,11 @@ abstract class SuspectDetailControllerBase with Store, ControllerLifeCycle {
         isLoading = false;
       },
     );
+  }
+
+  @action
+  Future<void> getPlagueTypes() async {
+    plagueTypes.clear();
+    plagueTypes.addAll(await _suspectDetailRepository.getPlagueTypes());
   }
 }

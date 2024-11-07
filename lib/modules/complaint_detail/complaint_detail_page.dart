@@ -82,9 +82,8 @@ class _ComplaintDetailPageState
                         Wrap(
                           spacing: 16.w,
                           children: [
-                            if (controller.complaint?.actions
-                                    .contains('resolver') ==
-                                false) ...[
+                            if (controller.complaint?.actions !=
+                                "observer") ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     padding:
@@ -135,9 +134,8 @@ class _ComplaintDetailPageState
                                   },
                                   child: const Text("Confirmar denúncia")),
                             ],
-                            if (controller.complaint?.actions
-                                    .contains('resolver') ==
-                                false) ...[
+                            if (controller.complaint?.actions !=
+                                "observer") ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     padding:

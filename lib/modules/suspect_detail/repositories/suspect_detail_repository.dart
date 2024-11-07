@@ -25,7 +25,7 @@ class SuspectDetailRepository extends RepositoryLifeCycle {
   Future<List<PlagueTypeModel>> getPlagueTypes() async {
     Response? response = await httpAdapter.request(
       httpMethod: HttpMethod.get,
-      url: "${WebServiceUrl.plagues}/plague_types",
+      url: "${WebServiceUrl.plagues}/plague-types",
       needsAuthorization: true,
     );
     return List.from(response?.data['data'])
@@ -33,11 +33,11 @@ class SuspectDetailRepository extends RepositoryLifeCycle {
         .toList();
   }
 
-  Future<void> confirmSuspect(String notes, int id) async {
+  Future<void> confirmSuspect(String notes, int id, int plagueTypeId) async {
     await httpAdapter.request(
         httpMethod: HttpMethod.post,
         url: "${WebServiceUrl.suspects}/$id/confirm",
         needsAuthorization: true,
-        data: {'notes': notes});
+        data: {'notes': notes, 'plague_type_id': plagueTypeId});
   }
 }

@@ -1,10 +1,10 @@
+import 'dart:developer';
+
 import 'package:biospot/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../generated/assets.dart';
+import '../constants/roles.dart';
 import '../routes/app_routes.dart';
 import 'default_drawer_tile.dart';
 
@@ -42,7 +42,7 @@ class DefaultDrawer extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(28.w, 8.h, 0, 0),
             child: Text(
-              "Usuário",
+              Modular.get<UserStore>().userModel?.role ?? "",
               style: context.textStyles.regular.copyWith(
                 fontSize: 16.sp,
                 color: context.colors.primary,
@@ -56,27 +56,35 @@ class DefaultDrawer extends StatelessWidget {
               height: 0,
             ),
           ),
-          DefaultDrawerTile(
-            leading: const Icon(Icons.search),
-            title: "Suspeitas",
-            onTap: () {
-              AppRoutes.goToSuspect();
-            },
-          ),
-          DefaultDrawerTile(
-            leading: const Icon(Icons.warning_amber_rounded),
-            title: "Denúncias",
-            onTap: () {
-              AppRoutes.goToComplaint();
-            },
-          ),
-          DefaultDrawerTile(
-            leading: const Icon(Icons.bug_report),
-            title: "Pragas",
-            onTap: () {
-              AppRoutes.goToPlagues();
-            },
-          ),
+          if (Modular.get<UserStore>().userModel?.role == Roles.FISCAL ||
+              Modular.get<UserStore>().userModel?.role == Roles.CITIZEN) ...{
+            DefaultDrawerTile(
+              leading: const Icon(Icons.warning_amber_rounded),
+              title: "Denúncias",
+              onTap: () {
+                AppRoutes.goToComplaint();
+              },
+            ),
+          },
+          if (Modular.get<UserStore>().userModel?.role == Roles.FISCAL ||
+              Modular.get<UserStore>().userModel?.role == Roles.SPECIALIST) ...{
+            DefaultDrawerTile(
+              leading: const Icon(Icons.warning_amber_rounded),
+              title: "Suspeitas",
+              onTap: () {
+                AppRoutes.goToSuspect();
+              },
+            ),
+          },
+          if (Modular.get<UserStore>().userModel?.role == Roles.SPECIALIST) ...{
+            DefaultDrawerTile(
+              leading: const Icon(Icons.bug_report),
+              title: "Pragas",
+              onTap: () {
+                AppRoutes.goToPlagues();
+              },
+            ),
+          },
           const Spacer(),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 38.h),
