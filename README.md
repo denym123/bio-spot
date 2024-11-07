@@ -33,6 +33,9 @@ biospot/
 │   │   ├── enums/  
 │   │   ├── exceptions/  
 │   │   └── ...  
+│   ├── global_modules/  
+│   │   ├── core/  
+│   │   │   └── core_module.dart  
 │   ├── modules/  
 │   │   ├── moduleA/  
 │   │   │   ├── controllers/  
