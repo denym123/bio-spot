@@ -69,7 +69,7 @@ class DefaultDrawer extends StatelessWidget {
           if (Modular.get<UserStore>().userModel?.role == Roles.FISCAL ||
               Modular.get<UserStore>().userModel?.role == Roles.SPECIALIST) ...{
             DefaultDrawerTile(
-              leading: const Icon(Icons.warning_amber_rounded),
+              leading: const Icon(Icons.search),
               title: "Suspeitas",
               onTap: () {
                 AppRoutes.goToSuspect();

@@ -34,9 +34,9 @@ class PlagueTile extends StatelessWidget {
           child: Row(
             children: [
               Icon(
-                Icons.search,
+                Icons.bug_report,
                 size: 32.r,
-                color: Colors.amber,
+                color: Colors.red,
               ),
               SizedBox(width: 16.w),
               Expanded(

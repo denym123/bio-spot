@@ -79,110 +79,120 @@ class _ComplaintDetailPageState
                           style: context.textStyles.regular,
                         ),
                         SizedBox(height: 16.h),
-                        Wrap(
-                          spacing: 16.w,
-                          children: [
-                            if (controller.complaint?.actions !=
-                                "observer") ...[
-                              ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(6.w)),
-                                    backgroundColor: context.colors.primary,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            backgroundColor: Colors.white,
-                                            title: const Text("Confirmar"),
-                                            content: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                DefaultInputField(
-                                                    multiArea: true,
-                                                    label: "Notas (opcional)",
-                                                    controller: controller
-                                                        .notesController),
-                                                const Text(
-                                                    "Tem certeza que deseja confirmar a denúncia?"),
+                        if (controller.complaint?.status?.name !=
+                                "Confirmada" &&
+                            controller.complaint?.status?.name !=
+                                "Descartada") ...[
+                          Wrap(
+                            spacing: 16.w,
+                            children: [
+                              if (controller.complaint?.actions !=
+                                  "observer") ...[
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6.w)),
+                                      backgroundColor: context.colors.primary,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              backgroundColor: Colors.white,
+                                              title: const Text("Confirmar"),
+                                              content: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  DefaultInputField(
+                                                      multiArea: true,
+                                                      label: "Notas (opcional)",
+                                                      controller: controller
+                                                          .notesController),
+                                                  const Text(
+                                                      "Tem certeza que deseja confirmar a denúncia?"),
+                                                ],
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Modular.to.pop();
+                                                      controller
+                                                          .confirmComplaint(
+                                                              widget.complaint
+                                                                  .id);
+                                                    },
+                                                    child: const Text(
+                                                        "Confirmar")),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child:
+                                                        const Text("Cancelar")),
                                               ],
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Modular.to.pop();
-                                                    controller.confirmComplaint(
-                                                        widget.complaint.id);
-                                                  },
-                                                  child:
-                                                      const Text("Confirmar")),
-                                              TextButton(
+                                            );
+                                          });
+                                    },
+                                    child: const Text("Confirmar denúncia")),
+                              ],
+                              if (controller.complaint?.actions !=
+                                  "observer") ...[
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6.w)),
+                                      backgroundColor: context.colors.error,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              backgroundColor: Colors.white,
+                                              title: const Text(
+                                                "Descartar denúncia",
+                                              ),
+                                              content: const Text(
+                                                "Tem certeza que deseja descartar esta denúncia?",
+                                              ),
+                                              actions: [
+                                                TextButton(
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
                                                   },
-                                                  child:
-                                                      const Text("Cancelar")),
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  child: const Text("Confirmar denúncia")),
+                                                  child: const Text("Cancelar"),
+                                                ),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      controller
+                                                          .deleteComplaint(
+                                                              widget.complaint
+                                                                  .id);
+                                                    },
+                                                    child: const Text(
+                                                      "Descartar",
+                                                      style: TextStyle(
+                                                          color: Colors.red),
+                                                    )),
+                                              ],
+                                            );
+                                          });
+                                    },
+                                    child: const Text("Descartar denúncia")),
+                              ],
                             ],
-                            if (controller.complaint?.actions !=
-                                "observer") ...[
-                              ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(6.w)),
-                                    backgroundColor: context.colors.error,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            backgroundColor: Colors.white,
-                                            title: const Text(
-                                              "Descartar denúncia",
-                                            ),
-                                            content: const Text(
-                                              "Tem certeza que deseja descartar esta denúncia?",
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: const Text("Cancelar"),
-                                              ),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    controller.deleteComplaint(
-                                                        widget.complaint.id);
-                                                  },
-                                                  child: const Text(
-                                                    "Descartar",
-                                                    style: TextStyle(
-                                                        color: Colors.red),
-                                                  )),
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  child: const Text("Descartar denúncia")),
-                            ],
-                          ],
-                        ),
+                          ),
+                        ]
                       ],
                     ),
                   ),

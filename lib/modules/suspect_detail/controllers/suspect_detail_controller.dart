@@ -51,6 +51,7 @@ abstract class SuspectDetailControllerBase with Store, ControllerLifeCycle {
         .then(
       (value) {
         Modular.get<SuspectController>().fetchSuspects();
+        getSuspect(id);
       },
     ).whenComplete(
       () {

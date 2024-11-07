@@ -36,7 +36,7 @@ class ComplaintTile extends StatelessWidget {
               Icon(
                 Icons.campaign_rounded,
                 size: 32.r,
-                color: Colors.red,
+                color: Colors.green,
               ),
               SizedBox(width: 16.w),
               Expanded(

@@ -113,6 +113,10 @@ class HttpAdapterImpl implements HttpAdapter {
   void _exceptionHandler(dynamic data, dio.DioException e, String url) {
     log('[HTTP] ${e.response}');
 
+    if (e.response?.data is Map && e.response?.data['message'] != null) {
+      Messages.success(e.response?.data['message']);
+    }
+
     HttpException httpException =
         HttpException(dioException: e, url: url, data: data);
 

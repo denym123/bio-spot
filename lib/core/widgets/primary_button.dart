@@ -1,5 +1,6 @@
 import 'package:biospot/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class PrimaryButton extends StatelessWidget {
   final double? width;
@@ -20,14 +21,17 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? () {} : onPressed,
       style: style ??
           context.styles.primaryButton.style?.copyWith(
             minimumSize: WidgetStateProperty.all<Size>(
               Size(width ?? double.infinity, height ?? 48.h),
             ),
           ),
-      child: Text(label),
+      child: isLoading
+          ? LoadingAnimationWidget.stretchedDots(
+              color: Colors.white, size: 24.h)
+          : Text(label),
     );
   }
 }

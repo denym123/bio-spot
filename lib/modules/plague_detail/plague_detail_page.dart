@@ -82,8 +82,9 @@ class _SuspectDetailPageState
                         Wrap(
                           spacing: 16.w,
                           children: [
-                            if (controller.plagueModel?.actions !=
-                                "observer") ...[
+                            if (controller.plagueModel?.actions != "observer" &&
+                                controller.plagueModel?.status?.name !=
+                                    "Resolvido") ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     padding:
@@ -105,7 +106,7 @@ class _SuspectDetailPageState
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 const Text(
-                                                    "Tem certeza que deseja confirmar a denúncia?"),
+                                                    "Tem certeza que deseja tonar resolvida a praga?"),
                                               ],
                                             ),
                                             actions: [
@@ -127,7 +128,7 @@ class _SuspectDetailPageState
                                           );
                                         });
                                   },
-                                  child: const Text("Confirmar denúncia")),
+                                  child: const Text("Resolver praga")),
                             ],
                           ],
                         ),

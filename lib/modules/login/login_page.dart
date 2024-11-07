@@ -79,19 +79,6 @@ class _LoginPageState extends PageLifeCycleState<LoginController, LoginPage>
                         },
                       );
                     }),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Text("Não possui uma conta?"),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text("Cadastre-se",
-                              style: context.textStyles.bold.copyWith(
-                                  color: context.colors.primary,
-                                  fontSize: 14.sp)),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               )),

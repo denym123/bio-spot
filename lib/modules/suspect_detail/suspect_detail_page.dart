@@ -80,121 +80,129 @@ class _SuspectDetailPageState
                           style: context.textStyles.regular,
                         ),
                         SizedBox(height: 16.h),
-                        Wrap(
-                          spacing: 16.w,
-                          children: [
-                            if (controller.suspectModel?.actions !=
-                                "observer") ...[
-                              ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(6.w)),
-                                    backgroundColor: context.colors.primary,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            backgroundColor: Colors.white,
-                                            title: const Text("Confirmar"),
-                                            content: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                DefaultInputField(
-                                                    multiArea: true,
-                                                    label: "Notas (opcional)",
-                                                    controller: controller
-                                                        .notesController),
-                                                const Text(
-                                                    "Tem certeza que deseja confirmar a suspeita?"),
-                                                DefaultSingleDropdownButton(
-                                                    required: true,
-                                                    label: "Tipos de praga",
-                                                    value: null,
-                                                    onChanged: (val) {
-                                                      controller
-                                                              .selectedPlagueType =
-                                                          val;
+                        if (controller.suspectModel?.status?.name !=
+                                "Confirmada" &&
+                            controller.suspectModel?.status?.name !=
+                                "Descartada") ...[
+                          Wrap(
+                            spacing: 16.w,
+                            children: [
+                              if (controller.suspectModel?.actions !=
+                                  "observer") ...[
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6.w)),
+                                      backgroundColor: context.colors.primary,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              backgroundColor: Colors.white,
+                                              title: const Text("Confirmar"),
+                                              content: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  DefaultInputField(
+                                                      multiArea: true,
+                                                      label: "Notas (opcional)",
+                                                      controller: controller
+                                                          .notesController),
+                                                  const Text(
+                                                      "Tem certeza que deseja confirmar a suspeita?"),
+                                                  DefaultSingleDropdownButton(
+                                                      required: true,
+                                                      label: "Tipos de praga",
+                                                      value: null,
+                                                      onChanged: (val) {
+                                                        controller
+                                                                .selectedPlagueType =
+                                                            val;
+                                                      },
+                                                      items: controller
+                                                          .plagueTypes)
+                                                ],
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Modular.to.pop();
+                                                      controller.confirmSuspect(
+                                                          widget.suspectModel
+                                                              .id!);
                                                     },
-                                                    items:
-                                                        controller.plagueTypes)
+                                                    child: const Text(
+                                                        "Confirmar")),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child:
+                                                        const Text("Cancelar")),
                                               ],
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Modular.to.pop();
-                                                    controller.confirmSuspect(
-                                                        widget
-                                                            .suspectModel.id!);
-                                                  },
-                                                  child:
-                                                      const Text("Confirmar")),
-                                              TextButton(
+                                            );
+                                          });
+                                    },
+                                    child: const Text("Confirmar suspeita")),
+                              ],
+                              if (controller.suspectModel?.actions !=
+                                  "observer") ...[
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6.w)),
+                                      backgroundColor: context.colors.error,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              backgroundColor: Colors.white,
+                                              title: const Text(
+                                                "Descartar suspeita",
+                                              ),
+                                              content: const Text(
+                                                "Tem certeza que deseja descartar esta suspeita?",
+                                              ),
+                                              actions: [
+                                                TextButton(
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
                                                   },
-                                                  child:
-                                                      const Text("Cancelar")),
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  child: const Text("Confirmar suspeita")),
+                                                  child: const Text("Cancelar"),
+                                                ),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      controller.deleteSuspect(
+                                                          widget.suspectModel
+                                                              .id!);
+                                                    },
+                                                    child: const Text(
+                                                        "Descartar",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.red))),
+                                              ],
+                                            );
+                                          });
+                                    },
+                                    child: const Text("Descartar suspeita")),
+                              ],
                             ],
-                            if (controller.suspectModel?.actions !=
-                                "observer") ...[
-                              ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(6.w)),
-                                    backgroundColor: context.colors.error,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            backgroundColor: Colors.white,
-                                            title: const Text(
-                                              "Descartar suspeita",
-                                            ),
-                                            content: const Text(
-                                              "Tem certeza que deseja descartar esta suspeita?",
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: const Text("Cancelar"),
-                                              ),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    controller.deleteSuspect(
-                                                        widget
-                                                            .suspectModel.id!);
-                                                  },
-                                                  child: const Text("Descartar",
-                                                      style: TextStyle(
-                                                          color: Colors.red))),
-                                            ],
-                                          );
-                                        });
-                                  },
-                                  child: const Text("Descartar suspeita")),
-                            ],
-                          ],
-                        ),
+                          ),
+                        ]
                       ],
                     ),
                   ),

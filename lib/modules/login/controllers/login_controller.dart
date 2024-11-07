@@ -31,6 +31,7 @@ abstract class LoginControllerBase with Store, ControllerLifeCycle {
 
   @action
   Future<void> login() async {
+    isLoading = true;
     await _loginRepository
         .login(
       LoginRequestDto(
@@ -55,6 +56,6 @@ abstract class LoginControllerBase with Store, ControllerLifeCycle {
       },
     ).catchError((e) {
       _localSecureStorage.clear();
-    });
+    }).whenComplete(() => isLoading = false);
   }
 }

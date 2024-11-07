@@ -34,22 +34,9 @@ class _PlaguePageState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 16.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // PrimarySmallButton(
-                //   label: "Nova suspeita",
-                //   isLoading: false,
-                //   icon: Icons.add,
-                //   onPressed: () {
-                //     AppRoutes.goToNewProcess();
-                //   },
-                // ),
-              ],
-            ),
             SizedBox(height: 16.h),
             Text(
-              "Minhas ultimas suspeitas de praga",
+              "Todas as pragas",
               style: context.textStyles.medium,
             ),
             SizedBox(height: 16.h),

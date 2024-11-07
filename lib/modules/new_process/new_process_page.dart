@@ -99,26 +99,28 @@ class _NewProcessPageState
                 multiArea: true,
               ),
               SizedBox(height: 32.w),
-              PrimaryButton(
-                  label: "Confirmar",
-                  isLoading: controller.isLoading,
-                  onPressed: () {
-                    if (Modular.to.navigateHistory.any(
-                      (element) {
-                        return element.name.contains(Routes.complaint);
-                      },
-                    )) {
-                      controller.sendNewComplaintProcess();
-                    }
+              Observer(builder: (context) {
+                return PrimaryButton(
+                    label: "Confirmar",
+                    isLoading: controller.isLoading,
+                    onPressed: () {
+                      if (Modular.to.navigateHistory.any(
+                        (element) {
+                          return element.name.contains(Routes.complaint);
+                        },
+                      )) {
+                        controller.sendNewComplaintProcess();
+                      }
 
-                    if (Modular.to.navigateHistory.any(
-                      (element) {
-                        return element.name.contains(Routes.suspect);
-                      },
-                    )) {
-                      controller.sendNewSuspectProcess();
-                    }
-                  }),
+                      if (Modular.to.navigateHistory.any(
+                        (element) {
+                          return element.name.contains(Routes.suspect);
+                        },
+                      )) {
+                        controller.sendNewSuspectProcess();
+                      }
+                    });
+              }),
             ],
           ),
         ),
