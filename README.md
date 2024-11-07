@@ -12,7 +12,7 @@ Versão: 3.24.3
 2. Caso nao tenha a versao do projeto do flutter, a instale usando o fvm:  ```fvm install 3.24.3```
 4. Escolha a versao do flutter que quer usar utilizando o fvm:  ```fvm use 3.24.3```
 4. Instale as dependências: ```fvm flutter pub get```
-5. Execute o projeto: ```bash flutter run --target lib/main_hom --flavor hom```
+5. Execute o projeto: ```fvm flutter run --target lib/main```
 
 
 ## Organização da Arquitetura do Projeto
