@@ -90,6 +90,26 @@ mixin _$NewProcessController on NewProcessControllerBase, Store {
     });
   }
 
+  late final _$sendNewComplaintProcessAsyncAction = AsyncAction(
+      'NewProcessControllerBase.sendNewComplaintProcess',
+      context: context);
+
+  @override
+  Future<void> sendNewComplaintProcess() {
+    return _$sendNewComplaintProcessAsyncAction
+        .run(() => super.sendNewComplaintProcess());
+  }
+
+  late final _$sendNewSuspectProcessAsyncAction = AsyncAction(
+      'NewProcessControllerBase.sendNewSuspectProcess',
+      context: context);
+
+  @override
+  Future<void> sendNewSuspectProcess() {
+    return _$sendNewSuspectProcessAsyncAction
+        .run(() => super.sendNewSuspectProcess());
+  }
+
   @override
   String toString() {
     return '''

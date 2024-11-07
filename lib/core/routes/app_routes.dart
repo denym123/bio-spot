@@ -30,4 +30,8 @@ class AppRoutes {
   static goToNewProcess() {
     Modular.to.pushNamed(Routes.newResquest);
   }
+
+  static goToPlagues() {
+    Modular.to.navigate(Routes.plagues);
+  }
 }

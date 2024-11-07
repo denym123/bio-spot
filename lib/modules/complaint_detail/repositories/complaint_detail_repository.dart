@@ -16,16 +16,16 @@ class ComplaintDetailRepository extends RepositoryLifeCycle {
   Future<void> discardComplaint(int id) async {
     await httpAdapter.request(
       httpMethod: HttpMethod.post,
-      url: "${WebServiceUrl.complaints}/$id",
+      url: "${WebServiceUrl.complaints}/$id/discard",
       needsAuthorization: true,
     );
   }
 
-  Future<void> confirmComplaint(int id) async {
+  Future<void> confirmComplaint(int id, String notes) async {
     await httpAdapter.request(
         httpMethod: HttpMethod.post,
         url: "${WebServiceUrl.complaints}/$id/confirm",
         needsAuthorization: true,
-        data: {'notes': "legalllll"});
+        data: {'notes': notes});
   }
 }

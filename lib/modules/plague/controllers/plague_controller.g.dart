@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'suspect_controller.dart';
+part of 'plague_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'suspect_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SuspectController on SuspectControllerBase, Store {
+mixin _$PlagueController on PlagueControllerBase, Store {
   late final _$isLoadingAtom =
-      Atom(name: 'SuspectControllerBase.isLoading', context: context);
+      Atom(name: 'PlagueControllerBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -25,12 +25,12 @@ mixin _$SuspectController on SuspectControllerBase, Store {
     });
   }
 
-  late final _$fetchSuspectsAsyncAction =
-      AsyncAction('SuspectControllerBase.fetchSuspects', context: context);
+  late final _$fetchPlaguesAsyncAction =
+      AsyncAction('PlagueControllerBase.fetchPlagues', context: context);
 
   @override
-  Future<void> fetchSuspects() {
-    return _$fetchSuspectsAsyncAction.run(() => super.fetchSuspects());
+  Future<void> fetchPlagues() {
+    return _$fetchPlaguesAsyncAction.run(() => super.fetchPlagues());
   }
 
   @override

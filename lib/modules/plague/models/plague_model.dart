@@ -1,24 +1,22 @@
 import '../../../core/core.dart';
 import '../../complaint/models/complaint_model.dart';
 
-class SuspectModel {
+class PlagueModel {
   int? id;
-  String? notes;
   StatusModel? status;
   ProcessInfo? processInfo;
   String? actions;
-  ComplaintModel? complaint;
+  bool? isPublic;
 
-  SuspectModel(
+  PlagueModel(
       {required this.id,
       required this.status,
       this.processInfo,
-      required this.notes,
-      required this.complaint,
+      required this.isPublic,
       required this.actions});
 
-  factory SuspectModel.fromJson(Map<String, dynamic> json) {
-    return SuspectModel(
+  factory PlagueModel.fromJson(Map<String, dynamic> json) {
+    return PlagueModel(
         id: json['id'],
         status: json['status'] != null
             ? StatusModel.fromJson(json['status'])
@@ -27,9 +25,6 @@ class SuspectModel {
             ? ProcessInfo.fromJson(json['process_info'])
             : null,
         actions: json['actions'],
-        notes: json['notes'],
-        complaint: json['complaint'] != null
-            ? ComplaintModel.fromJson(json['complaint'])
-            : null);
+        isPublic: json['is_public']);
   }
 }

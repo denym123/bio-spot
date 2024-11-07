@@ -1,27 +1,27 @@
 import 'package:biospot/core/widgets/default_input_field.dart';
-import 'package:biospot/modules/complaint/models/complaint_model.dart';
+import 'package:biospot/modules/suspect/models/suspect_model.dart';
+import 'package:biospot/modules/suspect_detail/controllers/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../core/core.dart';
-import 'complaint_detail.dart';
 
-class ComplaintDetailPage extends StatefulWidget {
-  final ComplaintModel complaint;
+class SuspectDetailPage extends StatefulWidget {
+  final SuspectModel suspectModel;
 
-  const ComplaintDetailPage({super.key, required this.complaint});
+  const SuspectDetailPage({super.key, required this.suspectModel});
 
   @override
-  State<ComplaintDetailPage> createState() => _ComplaintDetailPageState();
+  State<SuspectDetailPage> createState() => _SuspectDetailPageState();
 }
 
-class _ComplaintDetailPageState
-    extends PageLifeCycleState<ComplaintDetailController, ComplaintDetailPage> {
+class _SuspectDetailPageState
+    extends PageLifeCycleState<SuspectDetailController, SuspectDetailPage> {
   @override
   Map<String, dynamic>? get params => {
-        'complaint': widget.complaint,
+        'suspect': widget.suspectModel,
       };
 
   @override
@@ -29,7 +29,7 @@ class _ComplaintDetailPageState
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Detalhamento da denúncia',
+          'Detalhamento da suspeita',
           style: context.textStyles.semiBold16.copyWith(color: Colors.white),
         ),
       ),
@@ -56,7 +56,7 @@ class _ComplaintDetailPageState
                             Spacer(),
                             IconButton(
                               onPressed: () {
-                                controller.getComplaint(widget.complaint.id);
+                                controller.getSuspect(widget.suspectModel.id!);
                               },
                               icon: Icon(Icons.refresh,
                                   color: context.colors.primary),
@@ -65,25 +65,30 @@ class _ComplaintDetailPageState
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          "Descrição: ${controller.complaint?.processInfo?.description ?? ''}",
+                          "Notas: ${controller.suspectModel?.notes ?? ''}",
                           style: context.textStyles.regular,
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          "Data: ${controller.complaint?.startedAt.replaceAll('-', '/')}",
+                          "Descrição: ${controller.suspectModel?.processInfo?.description ?? ''}",
                           style: context.textStyles.regular,
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          "Situação: ${controller.complaint?.status?.name ?? ''}",
+                          "Data: ${controller.suspectModel?.complaint?.startedAt.replaceAll('-', '/')}",
+                          style: context.textStyles.regular,
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          "Situação: ${controller.suspectModel?.status?.name ?? ''}",
                           style: context.textStyles.regular,
                         ),
                         SizedBox(height: 16.h),
                         Wrap(
                           spacing: 16.w,
                           children: [
-                            if (controller.complaint?.actions
-                                    .contains('resolver') ==
+                            if (controller.suspectModel?.actions
+                                    ?.contains('resolver') ==
                                 false) ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -118,8 +123,9 @@ class _ComplaintDetailPageState
                                               TextButton(
                                                   onPressed: () {
                                                     Modular.to.pop();
-                                                    controller.confirmComplaint(
-                                                        widget.complaint.id);
+                                                    controller.confirmSuspect(
+                                                        widget
+                                                            .suspectModel.id!);
                                                   },
                                                   child:
                                                       const Text("Confirmar")),
@@ -135,8 +141,8 @@ class _ComplaintDetailPageState
                                   },
                                   child: const Text("Confirmar denúncia")),
                             ],
-                            if (controller.complaint?.actions
-                                    .contains('resolver') ==
+                            if (controller.suspectModel?.actions
+                                    ?.contains('resolver') ==
                                 false) ...[
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -169,14 +175,13 @@ class _ComplaintDetailPageState
                                               ),
                                               TextButton(
                                                   onPressed: () {
-                                                    controller.deleteComplaint(
-                                                        widget.complaint.id);
+                                                    controller.deleteSuspect(
+                                                        widget
+                                                            .suspectModel.id!);
                                                   },
-                                                  child: const Text(
-                                                    "Descartar",
-                                                    style: TextStyle(
-                                                        color: Colors.red),
-                                                  )),
+                                                  child: const Text("Descartar",
+                                                      style: TextStyle(
+                                                          color: Colors.red))),
                                             ],
                                           );
                                         });

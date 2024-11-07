@@ -1,17 +1,17 @@
 import 'package:biospot/core/core.dart';
 import 'package:flutter/material.dart';
 
-class SuspectTile extends StatelessWidget {
-  final String suspectName;
-  final StatusModel? suspectStatus;
-  final String suspectDate;
+class PlagueTile extends StatelessWidget {
+  final String plagueName;
+  final StatusModel? plagueStatus;
+  final String plagueDate;
   final VoidCallback? onPressed;
 
-  const SuspectTile(
+  const PlagueTile(
       {super.key,
-      required this.suspectName,
-      required this.suspectDate,
-      required this.suspectStatus,
+      required this.plagueName,
+      required this.plagueDate,
+      required this.plagueStatus,
       this.onPressed});
 
   @override
@@ -43,20 +43,20 @@ class SuspectTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(suspectName,
+                    Text(plagueName,
                         style: context.textStyles.medium
                             .copyWith(color: context.colors.dark)),
                     Text(
-                      "Data de suspeita: ${suspectDate.replaceAll('-', "/")}",
+                      "Data de suspeita: ${plagueDate.replaceAll('-', "/")}",
                       style: context.textStyles.medium
                           .copyWith(color: context.colors.dark),
                     ),
                     Row(
                       children: [
-                        Text(suspectStatus?.name ?? '',
+                        Text(plagueStatus?.name ?? '',
                             style: context.textStyles.bold16.copyWith(
                                 fontSize: 16.sp,
-                                color: suspectStatus?.color.toColor() ??
+                                color: plagueStatus?.color.toColor() ??
                                     context.colors.primary)),
                       ],
                     ),

@@ -37,9 +37,10 @@ abstract class ComplaintDetailControllerBase with Store, ControllerLifeCycle {
   @action
   Future<void> confirmComplaint(int id) async {
     isLoading = true;
-    _complaintDetailRepository.confirmComplaint(id).then(
-      (value) {
-        Modular.get<ComplaintController>().fetchComplaints();
+    _complaintDetailRepository.confirmComplaint(id, notesController.text).then(
+      (value) async {
+        await Modular.get<ComplaintController>().fetchComplaints();
+        await getComplaint(id);
       },
     ).whenComplete(
       () {
@@ -53,8 +54,9 @@ abstract class ComplaintDetailControllerBase with Store, ControllerLifeCycle {
     isLoading = true;
     Modular.to.pop();
     _complaintDetailRepository.discardComplaint(id).then(
-      (value) {
+      (value) async {
         Modular.get<ComplaintController>().fetchComplaints();
+        await getComplaint(id);
       },
     ).whenComplete(
       () {

@@ -6,7 +6,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/core.dart';
 import 'new_process.dart';
@@ -25,7 +24,7 @@ class _NewProcessPageState
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Detalhamento da denúncia',
+          'Nova solicitação',
           style: context.textStyles.semiBold16.copyWith(color: Colors.white),
         ),
       ),

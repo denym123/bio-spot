@@ -15,6 +15,10 @@ abstract class SuspectControllerBase with Store, ControllerLifeCycle {
       : _suspectRepository = suspectRepository;
 
   ObservableList<SuspectModel> suspects = ObservableList<SuspectModel>();
+  @override
+  void onInit([Map<String, dynamic>? params]) {
+    fetchSuspects();
+  }
 
   @observable
   bool isLoading = false;

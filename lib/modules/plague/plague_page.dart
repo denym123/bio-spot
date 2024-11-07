@@ -1,29 +1,29 @@
 import 'package:biospot/core/widgets/default_drawer.dart';
 import 'package:biospot/core/widgets/primary_small_button.dart';
+import 'package:biospot/modules/plague/controllers/controllers.dart';
+import 'package:biospot/modules/plague/widgets/plague_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../core/core.dart';
 import '../../core/routes/app_routes.dart';
-import 'suspect.dart';
-import 'widgets/suspect_tile.dart';
 
-class SuspectPage extends StatefulWidget {
-  const SuspectPage({super.key});
+class PlaguePage extends StatefulWidget {
+  const PlaguePage({super.key});
 
   @override
-  State<SuspectPage> createState() => _SuspectPageState();
+  State<PlaguePage> createState() => _PlaguePageState();
 }
 
-class _SuspectPageState
-    extends PageLifeCycleState<SuspectController, SuspectPage> {
+class _PlaguePageState
+    extends PageLifeCycleState<PlagueController, PlaguePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Suspeitas',
+          'Pragas',
           style: context.textStyles.semiBold16.copyWith(color: Colors.white),
         ),
       ),
@@ -37,19 +37,19 @@ class _SuspectPageState
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                PrimarySmallButton(
-                  label: "Nova suspeita",
-                  isLoading: false,
-                  icon: Icons.add,
-                  onPressed: () {
-                    AppRoutes.goToNewProcess();
-                  },
-                ),
+                // PrimarySmallButton(
+                //   label: "Nova suspeita",
+                //   isLoading: false,
+                //   icon: Icons.add,
+                //   onPressed: () {
+                //     AppRoutes.goToNewProcess();
+                //   },
+                // ),
               ],
             ),
             SizedBox(height: 16.h),
             Text(
-              "Minhas ultimas denúncias de suspeitas",
+              "Minhas ultimas suspeitas de praga",
               style: context.textStyles.medium,
             ),
             SizedBox(height: 16.h),
@@ -58,25 +58,25 @@ class _SuspectPageState
                 child: !controller.isLoading
                     ? RefreshIndicator(
                         onRefresh: () {
-                          return controller.fetchSuspects();
+                          return controller.fetchPlagues();
                         },
                         child: ListView.separated(
                             itemBuilder: (context, index) {
-                              var suspect = controller.suspects[index];
-                              return SuspectTile(
+                              var plague = controller.plagues[index];
+                              return PlagueTile(
                                 onPressed: () {
-                                  AppRoutes.goToSuspectDetail(suspect);
+                                  // AppRoutes.goToPlagueDetail(plague);
                                 },
-                                suspectDate: suspect.complaint?.startedAt ?? '',
-                                suspectName:
-                                    suspect.processInfo?.description ?? '',
-                                suspectStatus: suspect.status,
+                                plagueName:
+                                    plague.processInfo?.description ?? '',
+                                plagueStatus: plague.status,
+                                plagueDate: '',
                               );
                             },
                             separatorBuilder: (context, index) {
                               return SizedBox(height: 16.h);
                             },
-                            itemCount: controller.suspects.length),
+                            itemCount: controller.plagues.length),
                       )
                     : Center(
                         child: LoadingAnimationWidget.stretchedDots(

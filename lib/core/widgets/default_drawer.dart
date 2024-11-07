@@ -57,17 +57,24 @@ class DefaultDrawer extends StatelessWidget {
             ),
           ),
           DefaultDrawerTile(
-            leading: Icon(Icons.search),
+            leading: const Icon(Icons.search),
             title: "Suspeitas",
             onTap: () {
               AppRoutes.goToSuspect();
             },
           ),
           DefaultDrawerTile(
-            leading: Icon(Icons.warning_amber_rounded),
+            leading: const Icon(Icons.warning_amber_rounded),
             title: "Denúncias",
             onTap: () {
               AppRoutes.goToComplaint();
+            },
+          ),
+          DefaultDrawerTile(
+            leading: const Icon(Icons.bug_report),
+            title: "Pragas",
+            onTap: () {
+              AppRoutes.goToPlagues();
             },
           ),
           const Spacer(),
@@ -85,7 +92,7 @@ class DefaultDrawer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.logout),
+                  const Icon(Icons.logout),
                   SizedBox(width: 16.w),
                   Text(
                     "Sair",
