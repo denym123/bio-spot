@@ -80,10 +80,6 @@ Agrupa os elementos centrais e compartilhados do projeto, como configurações, 
 - **exceptions/**: Definição de exceções personalizadas.
 - **...**: Outras pastas e arquivos centrais.
 
-#### Camada `generated`
-Contém arquivos gerados automaticamente, como os assets:
-- **assets.dart**: Referências a assets da aplicação.
-
 #### Camada `modules`
 Contém os módulos específicos da aplicação, organizados de forma paralela para facilitar a escalabilidade e manutenção. Cada módulo segue uma estrutura consistente, incluindo camadas de controllers, repositories, models, widgets, page e module. Por exemplo:
 
