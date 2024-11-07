@@ -78,7 +78,7 @@ class DefaultDrawer extends StatelessWidget {
           },
           if (Modular.get<UserStore>().userModel?.role == Roles.SPECIALIST) ...{
             DefaultDrawerTile(
-              leading: const Icon(Icons.bug_report),
+              leading: const Icon(Icons.campaign_rounded),
               title: "Pragas",
               onTap: () {
                 AppRoutes.goToPlagues();
