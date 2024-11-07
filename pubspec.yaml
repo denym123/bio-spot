@@ -45,13 +45,6 @@ dependencies:
   geolocator: ^13.0.1
   geocoding: ^3.0.0
 
-  # DataBase
-  path: ^1.9.0
-  sqflite: ^2.3.3+1
-  synchronized: ^3.1.0+1
-  crypto: ^3.0.5
-  cupertino_icons: ^1.0.8
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
