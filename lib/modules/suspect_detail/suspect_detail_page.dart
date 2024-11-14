@@ -104,30 +104,33 @@ class _SuspectDetailPageState
                                           context: context,
                                           builder: (context) {
                                             return AlertDialog(
+                                              
                                               backgroundColor: Colors.white,
                                               title: const Text("Confirmar"),
-                                              content: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  DefaultInputField(
-                                                      multiArea: true,
-                                                      label: "Notas (opcional)",
-                                                      controller: controller
-                                                          .notesController),
-                                                  const Text(
-                                                      "Tem certeza que deseja confirmar a suspeita?"),
-                                                  DefaultSingleDropdownButton(
-                                                      required: true,
-                                                      label: "Tipos de praga",
-                                                      value: null,
-                                                      onChanged: (val) {
-                                                        controller
-                                                                .selectedPlagueType =
-                                                            val;
-                                                      },
-                                                      items: controller
-                                                          .plagueTypes)
-                                                ],
+                                              content: SingleChildScrollView(
+                                                child: Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    DefaultInputField(
+                                                        multiArea: true,
+                                                        label: "Notas (opcional)",
+                                                        controller: controller
+                                                            .notesController),
+                                                    const Text(
+                                                        "Tem certeza que deseja confirmar a suspeita?"),
+                                                    DefaultSingleDropdownButton(
+                                                        required: true,
+                                                        label: "Tipos de praga",
+                                                        value: null,
+                                                        onChanged: (val) {
+                                                          controller
+                                                                  .selectedPlagueType =
+                                                              val;
+                                                        },
+                                                        items: controller
+                                                            .plagueTypes)
+                                                  ],
+                                                ),
                                               ),
                                               actions: [
                                                 TextButton(
