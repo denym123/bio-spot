@@ -1,6 +1,13 @@
 
 # Bio Spot
 
+## Finalidade do Projeto
+O Bio Spot é uma aplicação desenvolvida para registrar e validar denúncias de pragas agrícolas, promovendo uma gestão mais eficiente e centralizada dessas ocorrências. Seu principal objetivo é coletar dados diretamente do campo, permitindo que os usuários façam denúncias com informações georreferenciadas, imagens e descrições detalhadas.
+
+A plataforma conta com três fluxos distintos, voltados a três perfis diferentes, cada um com permissões específicas. Isso possibilita que diferentes setores da agricultura realizem validações técnicas das denúncias recebidas, garantindo maior credibilidade dos dados e auxiliando na tomada de decisões estratégicas, agora baseadas em informações precisas e atualizadas em tempo real.
+
+Esse modelo favorece a resposta rápida a surtos, a prevenção de danos e o planejamento de políticas públicas mais assertivas.
+
 ## Iniciando Projeto
 ### Versão do Flutter
 
